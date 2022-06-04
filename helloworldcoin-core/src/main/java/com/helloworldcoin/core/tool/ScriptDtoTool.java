@@ -69,9 +69,9 @@ public class ScriptDtoTool {
         int start = 0;
         List<String> script = new ArrayList<>();
         while (start<bytesScript.length){
-            long bytesOperationCodeLength = ByteUtil.bytesToUint64(ByteUtil.copy(bytesScript,start,start + ByteUtil.BYTE8_BYTE_COUNT));
+            long bytesOperationCodeLength = ByteUtil.bytesToUint64(ByteUtil.copy(bytesScript,start,ByteUtil.BYTE8_BYTE_COUNT));
             start += ByteUtil.BYTE8_BYTE_COUNT;
-            byte[] bytesOperationCode = ByteUtil.copy(bytesScript,start, start+(int) bytesOperationCodeLength);
+            byte[] bytesOperationCode = ByteUtil.copy(bytesScript,start, (int) bytesOperationCodeLength);
             start += bytesOperationCodeLength;
             if(ByteUtil.equals(OperationCode.OP_DUP.getCode(),bytesOperationCode) ||
                     ByteUtil.equals(OperationCode.OP_HASH160.getCode(),bytesOperationCode) ||
@@ -83,9 +83,9 @@ public class ScriptDtoTool {
                 String stringOperationCode = ByteUtil.bytesToHexString(bytesOperationCode);
                 script.add(stringOperationCode);
 
-                long bytesOperationDataLength = ByteUtil.bytesToUint64(ByteUtil.copy(bytesScript,start,start + ByteUtil.BYTE8_BYTE_COUNT));
+                long bytesOperationDataLength = ByteUtil.bytesToUint64(ByteUtil.copy(bytesScript,start,ByteUtil.BYTE8_BYTE_COUNT));
                 start += ByteUtil.BYTE8_BYTE_COUNT;
-                byte[] bytesOperationData = ByteUtil.copy(bytesScript,start, start+(int) bytesOperationDataLength);
+                byte[] bytesOperationData = ByteUtil.copy(bytesScript,start, (int) bytesOperationDataLength);
                 start += bytesOperationDataLength;
                 String stringOperationData = ByteUtil.bytesToHexString(bytesOperationData);
                 script.add(stringOperationData);
