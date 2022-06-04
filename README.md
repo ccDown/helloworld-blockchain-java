@@ -4,9 +4,9 @@
 
 helloworldcoin is a 'helloworld' level cryptocurrency system.   
 
-if you know java , [helloworldcoin-java](https://github.com/helloworldcoin/helloworldcoin-java) ;
 if you know cpp , [helloworldcoin-cpp](https://github.com/helloworldcoin/helloworldcoin-cpp) ;
-if you know go , [helloworldcoin-go](https://github.com/helloworldcoin/helloworldcoin-go) .
+if you know go , [helloworldcoin-go](https://github.com/helloworldcoin/helloworldcoin-go) ;
+if you know java , [helloworldcoin-java](https://github.com/helloworldcoin/helloworldcoin-java) .
 <br/><br/><br/>
 
 
