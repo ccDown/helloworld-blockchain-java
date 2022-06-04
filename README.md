@@ -31,6 +31,9 @@ if you know java , [helloworldcoin-java](https://github.com/helloworldcoin/hello
 #### requirements
 java 1.8
 
+#### main
+helloworldcoin-java/helloworldcoin-application/src/main/java/com/helloworldcoin/application/HelloworldcoinApplication.java
+
 #### integrated with intellij idea
 ``` 
 1. import project to idea
