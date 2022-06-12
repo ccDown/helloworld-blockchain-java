@@ -10,7 +10,7 @@ public class IncentiveSetting {
     //expected time to mine a block (unit: millisecond)
     public static final long BLOCK_TIME = 1000 * 60 * 10;
     //the number of blocks in a mining difficulty cycle
-    public static final long INTERVAL_BLOCK_COUNT = 6 * 24 * 7 * 2;
+    public static final long INTERVAL_BLOCK_COUNT = 2;
     //the expected cycle time in a mining cycle (unit: milliseconds)
     public static final long INTERVAL_TIME = BLOCK_TIME * INTERVAL_BLOCK_COUNT;
     //block initialization incentive
