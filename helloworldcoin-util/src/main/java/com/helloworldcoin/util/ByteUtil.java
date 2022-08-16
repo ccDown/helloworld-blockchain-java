@@ -106,8 +106,8 @@ public class ByteUtil {
 
     public static byte[] random32Bytes(){
         byte[] randomBytes = new byte[32];
-        Random RANDOM = new Random();
-        RANDOM.nextBytes(randomBytes);
+        Random random = new Random();
+        random.nextBytes(randomBytes);
         return randomBytes;
     }
 }
