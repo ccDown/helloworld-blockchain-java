@@ -35,17 +35,16 @@ public class SystemUtil {
 
     public static void callDefaultBrowser(String url){
         try {
-            //default open browser code
             if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                 Desktop.getDesktop().browse(new URI(url));
                 return;
             }
             if(isWindowsOperateSystem()){
-                Runtime rt = Runtime.getRuntime();
-                rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
+                Runtime runtime = Runtime.getRuntime();
+                runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
             }else if(isMacOperateSystem()){
-                Runtime rt = Runtime.getRuntime();
-                rt.exec("open " + url);
+                Runtime runtime = Runtime.getRuntime();
+                runtime.exec("open " + url);
             }else {
                 Runtime runtime = Runtime.getRuntime();
                 runtime.exec("xdg-open " + url);

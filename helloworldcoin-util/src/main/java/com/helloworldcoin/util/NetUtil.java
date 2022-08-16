@@ -43,11 +43,12 @@ public class NetUtil {
             br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
             String line;
             while ((line = br.readLine()) != null) {
+                //don't append newline symbol ('\r'、'\n'、'\r\n' etc).
                 data.append(line);
             }
             return data.toString();
         } catch (Exception e){
-            //default return value null
+            //if error, return null
             return null;
         } finally {
             try {

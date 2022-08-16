@@ -8,11 +8,11 @@ import java.util.Date;
  * @author x.king xdotking@gmail.com
  */
 public class TimeUtil {
-
+    //todo rename millisecond
     public static long millisecondTimestamp(){
         return System.currentTimeMillis();
     }
-
+    //todo rename formatMillisecond
     public static String formatMillisecondTimestamp(long millisecondTimestamp) {
         Date date = new Date(millisecondTimestamp);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
