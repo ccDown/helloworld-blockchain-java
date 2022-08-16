@@ -47,7 +47,7 @@
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>1 GB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
-            <MaxHistory>3</MaxHistory>
+            <MaxHistory>7</MaxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
