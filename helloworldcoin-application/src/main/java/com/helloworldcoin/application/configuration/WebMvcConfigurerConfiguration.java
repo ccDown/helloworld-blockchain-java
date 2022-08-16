@@ -34,7 +34,7 @@ public class WebMvcConfigurerConfiguration implements WebMvcConfigurer {
 	@Override
 	public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> handlerExceptionResolvers) {
 		handlerExceptionResolvers.add((httpServletRequest, httpServletResponse, handler, exception) -> {
-			LogUtil.error("global exception interception.",exception);
+			LogUtil.error("global exception.",exception);
 			try {
 				httpServletResponse.setHeader("Content-type", "application/json;");
 				httpServletResponse.setStatus(500);
