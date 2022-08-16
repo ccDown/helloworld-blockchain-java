@@ -49,6 +49,7 @@ public class FileUtil {
             String text = "";
             String line;
             while((line = br.readLine()) != null){
+                //don't append newline symbol ('\r'、'\n'、'\r\n' etc).
                 text += line;
             }
             return text;
