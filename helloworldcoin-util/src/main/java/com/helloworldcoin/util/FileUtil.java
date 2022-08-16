@@ -8,6 +8,7 @@ import java.io.*;
  */
 public class FileUtil {
 
+    //todo rename buildPath
     public static String newPath(String parent, String child) {
         return new File(parent,child).getAbsolutePath();
     }
