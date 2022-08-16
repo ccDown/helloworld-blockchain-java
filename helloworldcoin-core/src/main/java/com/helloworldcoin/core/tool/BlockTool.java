@@ -96,7 +96,7 @@ public class BlockTool {
     }
 
     public static boolean checkBlockTimestamp(Block previousBlock, Block currentBlock) {
-        if(currentBlock.getTimestamp() > TimeUtil.millisecondTimestamp()){
+        if(currentBlock.getTimestamp() > TimeUtil.getMillisecondTimestamp()){
             return false;
         }
         if(previousBlock == null){

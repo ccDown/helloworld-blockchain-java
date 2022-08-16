@@ -51,12 +51,12 @@ public class MinerDefaultImpl extends Miner {
 
             Account minerAccount = wallet.createAccount();
             Block block = buildMiningBlock(blockchainDatabase,unconfirmedTransactionDatabase,minerAccount);
-            long startTimestamp = TimeUtil.millisecondTimestamp();
+            long startTimestamp = TimeUtil.getMillisecondTimestamp();
             while (true){
                 if(!isActive()){
                     break;
                 }
-                if(TimeUtil.millisecondTimestamp()-startTimestamp > coreConfiguration.getMinerMineTimeInterval()){
+                if(TimeUtil.getMillisecondTimestamp()-startTimestamp > coreConfiguration.getMinerMineTimeInterval()){
                     break;
                 }
                 block.setNonce(ByteUtil.bytesToHexString(ByteUtil.random32Bytes()));
@@ -102,7 +102,7 @@ public class MinerDefaultImpl extends Miner {
     }
 
     private Block buildMiningBlock(BlockchainDatabase blockchainDatabase, UnconfirmedTransactionDatabase unconfirmedTransactionDatabase, Account minerAccount) {
-        long timestamp = TimeUtil.millisecondTimestamp();
+        long timestamp = TimeUtil.getMillisecondTimestamp();
 
         Block tailBlock = blockchainDatabase.queryTailBlock();
         Block nonNonceBlock = new Block();

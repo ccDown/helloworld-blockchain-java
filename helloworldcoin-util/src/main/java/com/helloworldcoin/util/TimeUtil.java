@@ -8,8 +8,8 @@ import java.util.Date;
  * @author x.king xdotking@gmail.com
  */
 public class TimeUtil {
-    //todo rename millisecond
-    public static long millisecondTimestamp(){
+
+    public static long getMillisecondTimestamp(){
         return System.currentTimeMillis();
     }
     //todo rename formatMillisecond
