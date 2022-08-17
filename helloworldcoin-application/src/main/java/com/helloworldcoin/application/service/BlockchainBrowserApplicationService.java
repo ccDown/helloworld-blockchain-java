@@ -20,6 +20,7 @@ public interface BlockchainBrowserApplicationService {
     TransactionVo queryTransactionByTransactionHash(String transactionHash);
     List<TransactionVo> queryTransactionListByBlockHashTransactionHeight(String blockHash, long from, long size);
 
+    //todo rename queryBlockByBlockHeight
     BlockVo queryBlockViewByBlockHeight(long blockHeight);
 
     UnconfirmedTransactionVo queryUnconfirmedTransactionByTransactionHash(String transactionHash);
