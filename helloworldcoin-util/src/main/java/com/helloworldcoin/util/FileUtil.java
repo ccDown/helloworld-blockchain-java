@@ -40,12 +40,9 @@ public class FileUtil {
     }
 
     public static String read(String path) {
-        File file = new File(path);
-        FileInputStream fileStream = null;
+        BufferedReader br = null;
         try {
-            fileStream = new FileInputStream(file);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileStream, "UTF-8");
-            BufferedReader br = new BufferedReader(inputStreamReader);
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"));
             String text = "";
             String line;
             while((line = br.readLine()) != null){
@@ -57,7 +54,7 @@ public class FileUtil {
             throw new RuntimeException(e);
         } finally {
             try {
-                fileStream.close();
+                br.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
