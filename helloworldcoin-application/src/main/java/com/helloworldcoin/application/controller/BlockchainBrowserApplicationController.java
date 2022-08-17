@@ -181,7 +181,7 @@ public class BlockchainBrowserApplicationController {
     @RequestMapping(value = BlockchainBrowserApplicationApi.QUERY_BLOCK_BY_BLOCK_HEIGHT,method={RequestMethod.GET,RequestMethod.POST})
     public Response<QueryBlockByBlockHeightResponse> queryBlockByBlockHeight(@RequestBody QueryBlockByBlockHeightRequest request){
         try {
-            BlockVo blockVo = blockchainBrowserApplicationService.queryBlockViewByBlockHeight(request.getBlockHeight());
+            BlockVo blockVo = blockchainBrowserApplicationService.queryBlockByBlockHeight(request.getBlockHeight());
             QueryBlockByBlockHeightResponse response = new QueryBlockByBlockHeightResponse();
             response.setBlock(blockVo);
             return Response.success(response);
@@ -203,7 +203,7 @@ public class BlockchainBrowserApplicationController {
                 QueryBlockByBlockHashResponse response = new QueryBlockByBlockHashResponse();
                 return Response.success(response);
             }
-            BlockVo blockVo = blockchainBrowserApplicationService.queryBlockViewByBlockHeight(block.getHeight());
+            BlockVo blockVo = blockchainBrowserApplicationService.queryBlockByBlockHeight(block.getHeight());
             QueryBlockByBlockHashResponse response = new QueryBlockByBlockHashResponse();
             response.setBlock(blockVo);
             return Response.success(response);

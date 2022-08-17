@@ -114,7 +114,7 @@ public class BlockchainBrowserApplicationServiceImpl implements BlockchainBrowse
     }
 
     @Override
-    public BlockVo queryBlockViewByBlockHeight(long blockHeight) {
+    public BlockVo queryBlockByBlockHeight(long blockHeight) {
         Block block = blockchainNetCore.getBlockchainCore().queryBlockByBlockHeight(blockHeight);
         if(block == null){
             return null;
