@@ -36,9 +36,9 @@ public class WebMvcConfigurerConfiguration implements WebMvcConfigurer {
 		handlerExceptionResolvers.add((httpServletRequest, httpServletResponse, handler, exception) -> {
 			LogUtil.error("global exception.",exception);
 			try {
-				httpServletResponse.setHeader("Content-type", "application/json;");
 				httpServletResponse.setStatus(500);
 				httpServletResponse.setCharacterEncoding("UTF-8");
+				httpServletResponse.setContentType("application/json");
 				Response response = Response.serviceUnavailable();
 				String jsonStringResponse = JsonUtil.toString(response);
 				httpServletResponse.getWriter().write(jsonStringResponse);

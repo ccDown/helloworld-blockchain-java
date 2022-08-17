@@ -1,8 +1,8 @@
 package com.helloworldcoin.application.interceptor;
 
 import com.helloworldcoin.application.vo.framwork.Response;
-import com.helloworldcoin.util.StringsUtil;
 import com.helloworldcoin.util.JsonUtil;
+import com.helloworldcoin.util.StringsUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -32,9 +32,9 @@ public class IpInterceptor implements HandlerInterceptor {
 		if(isIpAllow(remoteHost)){
 			return true;
 		}else {
-			httpServletResponse.setHeader("Content-type", "application/json;");
 			httpServletResponse.setStatus(500);
 			httpServletResponse.setCharacterEncoding("UTF-8");
+			httpServletResponse.setContentType("application/json");
 			Response response = Response.serviceUnauthorized();
 			String jsonStringResponse = JsonUtil.toString(response);
 			httpServletResponse.getWriter().write(jsonStringResponse);
