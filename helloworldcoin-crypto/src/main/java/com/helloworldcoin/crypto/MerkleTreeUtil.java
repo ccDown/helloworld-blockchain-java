@@ -8,7 +8,7 @@ import java.util.List;
 
 
 /**
- * Merkle Tree Util
+ * merkle tree util
  *
  * @author x.king xdotking@gmail.com
  */

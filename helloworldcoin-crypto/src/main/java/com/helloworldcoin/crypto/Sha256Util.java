@@ -3,7 +3,7 @@ package com.helloworldcoin.crypto;
 import java.security.MessageDigest;
 
 /**
- * Sha256 message digest tool
+ * sha256 message digest util
  *
  * @author x.king xdotking@gmail.com
  */

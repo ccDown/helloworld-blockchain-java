@@ -10,14 +10,14 @@ import org.bitcoinj.core.Base58;
 public class Base58Util {
 
     /**
-     * base58 encoding
+     * base58 encode
      */
     public static String encode(byte[] input) {
         return Base58.encode(input);
     }
 
     /**
-     * base58 decoding
+     * base58 decode
      */
     public static byte[] decode(String input) {
         return Base58.decode(input);

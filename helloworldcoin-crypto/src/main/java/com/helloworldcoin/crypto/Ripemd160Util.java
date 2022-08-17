@@ -3,7 +3,7 @@ package com.helloworldcoin.crypto;
 import java.security.MessageDigest;
 
 /**
- * RipeMD160 message digest tool
+ * ripeMD160 message digest util
  *
  * @author x.king xdotking@gmail.com
  */
