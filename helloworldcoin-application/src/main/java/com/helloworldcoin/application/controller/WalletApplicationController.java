@@ -155,6 +155,7 @@ public class WalletApplicationController {
             if(autoBuildTransactionResponse.isBuildTransactionSuccess()){
                 return Response.success(autoBuildTransactionResponse);
             }else {
+                //todo
                 return Response.serviceUnavailable();
             }
         } catch (Exception e){
