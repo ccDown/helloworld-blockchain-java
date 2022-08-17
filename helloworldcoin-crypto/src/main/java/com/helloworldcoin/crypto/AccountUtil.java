@@ -41,7 +41,7 @@ public class AccountUtil {
     private static final byte VERSION = 0x00;
 
     static {
-        JavaCryptographyExtensionProviderUtil.addBouncyCastleProvider();
+        BouncyCastleProviderUtil.addBouncyCastleProvider();
     }
 
     static {

@@ -10,7 +10,7 @@ import java.security.MessageDigest;
 public class Ripemd160Util {
 
     static {
-        JavaCryptographyExtensionProviderUtil.addBouncyCastleProvider();
+        BouncyCastleProviderUtil.addBouncyCastleProvider();
     }
 
     /**
@@ -18,7 +18,7 @@ public class Ripemd160Util {
      */
     public static byte[] digest(byte[] input) {
         try {
-            MessageDigest ripeMD160MessageDigest = MessageDigest.getInstance("RipeMD160",JavaCryptographyExtensionProviderUtil.getBouncyCastleProviderName());
+            MessageDigest ripeMD160MessageDigest = MessageDigest.getInstance("RipeMD160", BouncyCastleProviderUtil.getBouncyCastleProviderName());
             byte[] ripeMD160Digest = ripeMD160MessageDigest.digest(input);
             return ripeMD160Digest;
         } catch (Exception e) {

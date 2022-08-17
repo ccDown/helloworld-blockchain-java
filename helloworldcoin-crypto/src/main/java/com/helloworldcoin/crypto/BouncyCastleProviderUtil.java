@@ -10,7 +10,7 @@ import java.security.Security;
  *
  * @author x.king xdotking@gmail.com
  */
-public class JavaCryptographyExtensionProviderUtil {
+public class BouncyCastleProviderUtil {
 
     public static synchronized void addBouncyCastleProvider(){
         Provider provider = Security.getProvider(BouncyCastleProvider.PROVIDER_NAME);

@@ -10,7 +10,7 @@ import java.security.MessageDigest;
 public class Sha256Util {
 
     static {
-        JavaCryptographyExtensionProviderUtil.addBouncyCastleProvider();
+        BouncyCastleProviderUtil.addBouncyCastleProvider();
     }
 
     /**
@@ -18,7 +18,7 @@ public class Sha256Util {
      */
     public static byte[] digest(byte[] input) {
         try {
-            MessageDigest sha256MessageDigest = MessageDigest.getInstance("SHA-256",JavaCryptographyExtensionProviderUtil.getBouncyCastleProviderName());
+            MessageDigest sha256MessageDigest = MessageDigest.getInstance("SHA-256", BouncyCastleProviderUtil.getBouncyCastleProviderName());
             byte[] sha256Digest = sha256MessageDigest.digest(input);
             return sha256Digest;
         } catch (Exception e) {
