@@ -147,6 +147,7 @@ public class WalletApplicationController {
 
     /**
      * automatic build transaction
+     * //TODO BUILD_TRANSACTION
      */
     @RequestMapping(value = WalletApplicationApi.AUTOMATIC_BUILD_TRANSACTION,method={RequestMethod.GET,RequestMethod.POST})
     public Response<AutomaticBuildTransactionResponse> automaticBuildTransaction(@RequestBody AutomaticBuildTransactionRequest request){

@@ -84,6 +84,7 @@ public class NodeConsoleApplicationController {
     /**
      * is auto search block
      */
+    //TODO IS_SEARCH_BLOCK
     @RequestMapping(value = NodeConsoleApplicationApi.IS_AUTO_SEARCH_BLOCK,method={RequestMethod.GET,RequestMethod.POST})
     public Response<IsAutoSearchBlockResponse> isAutoSearchBlock(@RequestBody IsAutoSearchBlockRequest request){
         try {
@@ -237,6 +238,7 @@ public class NodeConsoleApplicationController {
     /**
      * active auto search node
      */
+    //TODO ACTIVE_SEARCH_NODE ?
     @RequestMapping(value = NodeConsoleApplicationApi.ACTIVE_AUTO_SEARCH_NODE,method={RequestMethod.GET,RequestMethod.POST})
     public Response<ActiveAutoSearchNodeResponse> activeAutoSearchNode(@RequestBody ActiveAutoSearchNodeRequest request){
         try {
