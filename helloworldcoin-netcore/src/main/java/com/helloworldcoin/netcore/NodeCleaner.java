@@ -31,6 +31,7 @@ public class NodeCleaner {
     public void start() {
         try {
             while (true){
+                //TODO cleanNodes
                 cleanDeadNodes();
                 ThreadUtil.millisecondSleep(netCoreConfiguration.getNodeCleanTimeInterval());
             }
