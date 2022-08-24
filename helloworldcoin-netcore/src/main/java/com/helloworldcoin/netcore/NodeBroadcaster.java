@@ -40,7 +40,7 @@ public class NodeBroadcaster {
 
     private void broadcastNode() {
         List<Node> nodes = nodeService.queryAllNodes();
-        if(nodes == null || nodes.size()==0){
+        if(nodes == null || nodes.size() == 0){
             return;
         }
 

@@ -43,7 +43,7 @@ public class NodeSearcher {
             return;
         }
         List<Node> nodes = nodeService.queryAllNodes();
-        if(nodes == null || nodes.size()==0){
+        if(nodes == null || nodes.size() == 0){
             return;
         }
 
@@ -63,7 +63,7 @@ public class NodeSearcher {
             return;
         }
         List<NodeDto> nodes = getNodesResponse.getNodes();
-        if(nodes == null || nodes.size()==0){
+        if(nodes == null || nodes.size() == 0){
             return;
         }
 

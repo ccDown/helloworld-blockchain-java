@@ -45,7 +45,7 @@ public class BlockBroadcaster {
 
     private void broadcastBlock() {
         List<Node> nodes = nodeService.queryAllNodes();
-        if(nodes == null || nodes.size()==0){
+        if(nodes == null || nodes.size() == 0){
             return;
         }
 

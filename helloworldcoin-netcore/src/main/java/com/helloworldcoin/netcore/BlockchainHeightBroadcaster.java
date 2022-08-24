@@ -42,7 +42,7 @@ public class BlockchainHeightBroadcaster {
 
     private void broadcastBlockchainHeight() {
         List<Node> nodes = nodeService.queryAllNodes();
-        if(nodes == null || nodes.size()==0){
+        if(nodes == null || nodes.size() == 0){
             return;
         }
 

@@ -41,7 +41,7 @@ public class NodeCleaner {
 
     private void cleanDeadNodes() {
         List<Node> nodes = nodeService.queryAllNodes();
-        if(nodes == null || nodes.size()==0){
+        if(nodes == null || nodes.size() == 0){
             return;
         }
 

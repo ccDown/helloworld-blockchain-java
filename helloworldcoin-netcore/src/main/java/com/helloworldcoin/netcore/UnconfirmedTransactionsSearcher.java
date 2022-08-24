@@ -47,7 +47,7 @@ public class UnconfirmedTransactionsSearcher {
 
     private void searchUnconfirmedTransactions() {
         List<Node> nodes = nodeService.queryAllNodes();
-        if(nodes == null || nodes.size()==0){
+        if(nodes == null || nodes.size() == 0){
             return;
         }
 
