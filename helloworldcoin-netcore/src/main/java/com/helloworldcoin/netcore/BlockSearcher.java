@@ -83,6 +83,7 @@ public class BlockSearcher {
             if(!isHardFork){
                 long forkBlockHeight = getForkBlockHeight(masterBlockchainCore,node);
                 duplicateBlockchainCore(masterBlockchainCore, slaveBlockchainCore);
+                //TODO criticalPointBlocHeight
                 slaveBlockchainCore.deleteBlocks(forkBlockHeight);
                 synchronizeBlocks(slaveBlockchainCore,node,forkBlockHeight);
                 promoteBlockchainCore(slaveBlockchainCore, masterBlockchainCore);
