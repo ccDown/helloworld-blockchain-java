@@ -32,5 +32,6 @@ public abstract class Wallet {
 
     public abstract long getBalanceByAddress(String address);
 
+    //todo rename
     public abstract AutoBuildTransactionResponse autoBuildTransaction(AutoBuildTransactionRequest request) ;
 }
