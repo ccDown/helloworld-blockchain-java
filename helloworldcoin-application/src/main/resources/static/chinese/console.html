@@ -52,13 +52,13 @@
                     </tr>
                     <tr>
                         <td>区块搜寻器状态</td>
-                        <td id="autoSearchBlock"></td>
-                        <td><button class="btn btn-primary" type="submit" id="autoSearchBlockSwitch">占位符</button></td>
+                        <td id="blockSearcherStatus"></td>
+                        <td><button class="btn btn-primary" type="submit" id="blockSearcherSwitch">占位符</button></td>
                     </tr>
                     <tr>
                         <td>节点搜寻器状态</td>
-                        <td id="autoSearchNode"></td>
-                        <td ><button class="btn btn-primary" type="submit" id="autoSearchNodeSwitch">占位符</button></td>
+                        <td id="nodeSearcherStatus"></td>
+                        <td ><button class="btn btn-primary" type="submit" id="nodeSearcherSwitch">占位符</button></td>
                     </tr>
                     <tr>
                         <td>最大挖矿区块高度</td>
@@ -70,7 +70,7 @@
         </div>
 
         <script>
-            let minerInActiveState,autoSearchBlock,autoSearchNode,maxBlockHeight;
+            let minerInActiveState,blockSearcherInActiveState,nodeSearcherInActiveState,maxBlockHeight;
             $(async function(){
                 let response = await $ajax({
                     url : baseUrl() + "/Api/BlockchainBrowserApplication/QueryBlockchainHeight"
@@ -87,19 +87,19 @@
             }());
             $(async function(){
                 let response = await $ajax({
-                    url : baseUrl() + "/Api/NodeConsoleApplication/IsAutoSearchBlock"
+                    url : baseUrl() + "/Api/NodeConsoleApplication/IsBlockSearcherActive"
                 });
-                autoSearchBlock = response.data.autoSearchBlock;
-                $('#autoSearchBlock').text(autoSearchBlock ? '搜寻中' : '休息中')
-                $('#autoSearchBlockSwitch').text(autoSearchBlock ? '关闭搜寻区块' : '开启搜寻区块')
+                blockSearcherInActiveState = response.data.blockSearcherInActiveState;
+                $('#blockSearcherStatus').text(blockSearcherInActiveState ? '搜寻中' : '休息中')
+                $('#blockSearcherSwitch').text(blockSearcherInActiveState ? '关闭搜寻区块' : '开启搜寻区块')
             }());
             $(async function(){
                 let response = await $ajax({
-                    url : baseUrl() + "/Api/NodeConsoleApplication/IsAutoSearchNode"
+                    url : baseUrl() + "/Api/NodeConsoleApplication/IsNodeSearcherActive"
                 });
-                autoSearchNode = response.data.autoSearchNode;
-                $('#autoSearchNode').text(autoSearchNode ? '搜寻中' : '休息中');
-                $('#autoSearchNodeSwitch').text(autoSearchNode ? '关闭搜寻节点' : '开启搜寻节点');
+                nodeSearcherInActiveState = response.data.nodeSearcherInActiveState;
+                $('#nodeSearcherStatus').text(nodeSearcherInActiveState ? '搜寻中' : '休息中');
+                $('#nodeSearcherSwitch').text(nodeSearcherInActiveState ? '关闭搜寻节点' : '开启搜寻节点');
             }());
             $(async function(){
                 let response = await $ajax({
@@ -148,26 +148,26 @@
                 }
                 location.reload();
             })
-            $('#autoSearchBlockSwitch').click(async function(){
-                if(autoSearchBlock){
+            $('#blockSearcherSwitch').click(async function(){
+                if(blockSearcherInActiveState){
                     await $ajax({
-                        url : baseUrl() + "/Api/NodeConsoleApplication/DeactiveAutoSearchBlock"
+                        url : baseUrl() + "/Api/NodeConsoleApplication/DeactiveBlockSearcher"
                     });
                 }else{
                     await $ajax({
-                        url : baseUrl() + "/Api/NodeConsoleApplicationle/ActiveAutoSearchBlock"
+                        url : baseUrl() + "/Api/NodeConsoleApplicationle/ActiveBlockSearcher"
                     });
                 }
                 location.reload();
             })
-            $('#autoSearchNodeSwitch').click(async function(){
-                if(autoSearchNode){
+            $('#nodeSearcherSwitch').click(async function(){
+                if(nodeSearcherInActiveState){
                     await $ajax({
-                        url : baseUrl() + "/Api/NodeConsoleApplication/DeactiveAutoSearchNode"
+                        url : baseUrl() + "/Api/NodeConsoleApplication/DeactiveNodeSearcher"
                     });
                 }else{
                     await $ajax({
-                        url : baseUrl() + "/Api/NodeConsoleApplication/ActiveAutoSearchNode"
+                        url : baseUrl() + "/Api/NodeConsoleApplication/ActiveNodeSearcher"
                     });
                 }
                 location.reload();
