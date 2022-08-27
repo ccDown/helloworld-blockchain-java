@@ -6,18 +6,18 @@ package com.helloworldcoin.application.vo.synchronizer;
  */
 public class IsBlockSearcherActiveResponse {
 
-    private boolean autoSearchBlock;
+    private boolean blockSearcherInActiveState;
 
 
 
 
     //region get set
-    public boolean isAutoSearchBlock() {
-        return autoSearchBlock;
+    public boolean isBlockSearcherInActiveState() {
+        return blockSearcherInActiveState;
     }
 
-    public void setAutoSearchBlock(boolean autoSearchBlock) {
-        this.autoSearchBlock = autoSearchBlock;
+    public void setBlockSearcherInActiveState(boolean blockSearcherInActiveState) {
+        this.blockSearcherInActiveState = blockSearcherInActiveState;
     }
     //endregion
 }

@@ -6,18 +6,18 @@ package com.helloworldcoin.application.vo.node;
  */
 public class IsNodeSearcherActiveResponse {
 
-    private boolean autoSearchNode;
+    private boolean nodeSearcherInActiveState;
 
 
 
 
     //region get set
-    public boolean isAutoSearchNode() {
-        return autoSearchNode;
+    public boolean isNodeSearcherInActiveState() {
+        return nodeSearcherInActiveState;
     }
 
-    public void setAutoSearchNode(boolean autoSearchNode) {
-        this.autoSearchNode = autoSearchNode;
+    public void setNodeSearcherInActiveState(boolean nodeSearcherInActiveState) {
+        this.nodeSearcherInActiveState = nodeSearcherInActiveState;
     }
     //endregion
 }

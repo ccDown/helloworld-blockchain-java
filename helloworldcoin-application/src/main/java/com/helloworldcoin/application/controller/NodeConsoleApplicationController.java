@@ -89,7 +89,7 @@ public class NodeConsoleApplicationController {
         try {
             boolean isBlockSearcherActive = blockchainNetCore.getNetCoreConfiguration().isBlockSearcherActive();
             IsBlockSearcherActiveResponse response = new IsBlockSearcherActiveResponse();
-            response.setAutoSearchBlock(isBlockSearcherActive);
+            response.setBlockSearcherInActiveState(isBlockSearcherActive);
             return Response.success(response);
         } catch (Exception e){
             String message = "'is block searcher active' error.";
@@ -226,7 +226,7 @@ public class NodeConsoleApplicationController {
         try {
             boolean isNodeSearcherActive = blockchainNetCore.getNetCoreConfiguration().isNodeSearcherActive();
             IsNodeSearcherActiveResponse response = new IsNodeSearcherActiveResponse();
-            response.setAutoSearchNode(isNodeSearcherActive);
+            response.setNodeSearcherInActiveState(isNodeSearcherActive);
             return Response.success(response);
         } catch (Exception e){
             String message = "'is node searcher active' error.";
