@@ -1,8 +1,8 @@
 package com.helloworldcoin.core;
 
 import com.helloworldcoin.core.model.Block;
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionRequest;
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionResponse;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionRequest;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionResponse;
 import com.helloworldcoin.core.model.wallet.Payee;
 import com.helloworldcoin.core.tool.ResourceTool;
 import com.helloworldcoin.util.FileUtil;
@@ -45,10 +45,10 @@ public class WalletTest {
         payee.setAddress(payeeAddress);
         List<Payee> nonChangePayees = new ArrayList<>();
         nonChangePayees.add(payee);
-        AutoBuildTransactionRequest request = new AutoBuildTransactionRequest();
+        AutomaticBuildTransactionRequest request = new AutomaticBuildTransactionRequest();
         request.setNonChangePayees(nonChangePayees);
 
-        AutoBuildTransactionResponse response = wallet.autoBuildTransaction(request);
+        AutomaticBuildTransactionResponse response = wallet.automaticBuildTransaction(request);
 
         blockchainCore.getMiner().getUnconfirmedTransactionDatabase().insertTransaction(response.getTransaction());
         blockchainCore.getMiner().setMinerMineMaxBlockHeight(2L);

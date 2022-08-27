@@ -1,4 +1,4 @@
-package com.helloworldcoin.core.model.wallet;
+package com.helloworldcoin.application.vo.wallet;
 
 import com.helloworldcoin.netcore.dto.TransactionDto;
 
@@ -8,23 +8,16 @@ import java.util.List;
  *
  * @author x.king xdotking@gmail.com
  */
-public class AutoBuildTransactionResponse {
+public class BuildTransactionResponse {
 
     private boolean buildTransactionSuccess;
 
-    //Constructed transaction hash
     private String transactionHash;
-    //Transaction Fees
     private long fee;
-    //payer
-    private List<Payer> payers;
-    //Non-change Payee
-    private List<Payee> nonChangePayees;
-    //Change Payee
-    private Payee changePayee;
-    //Payee = [non-change] payee + [change] payee
-    private List<Payee> payees;
-    //Constructed complete transaction
+    private List<PayerVo> payers;
+    private List<PayeeVo> nonChangePayees;
+    private PayeeVo changePayee;
+    private List<PayeeVo> payees;
     private TransactionDto transaction;
 
 
@@ -63,35 +56,35 @@ public class AutoBuildTransactionResponse {
         this.transaction = transaction;
     }
 
-    public List<Payee> getNonChangePayees() {
+    public List<PayeeVo> getNonChangePayees() {
         return nonChangePayees;
     }
 
-    public void setNonChangePayees(List<Payee> nonChangePayees) {
+    public void setNonChangePayees(List<PayeeVo> nonChangePayees) {
         this.nonChangePayees = nonChangePayees;
     }
 
-    public Payee getChangePayee() {
+    public PayeeVo getChangePayee() {
         return changePayee;
     }
 
-    public void setChangePayee(Payee changePayee) {
+    public void setChangePayee(PayeeVo changePayee) {
         this.changePayee = changePayee;
     }
 
-    public List<Payer> getPayers() {
+    public List<PayerVo> getPayers() {
         return payers;
     }
 
-    public void setPayers(List<Payer> payers) {
+    public void setPayers(List<PayerVo> payers) {
         this.payers = payers;
     }
 
-    public List<Payee> getPayees() {
+    public List<PayeeVo> getPayees() {
         return payees;
     }
 
-    public void setPayees(List<Payee> payees) {
+    public void setPayees(List<PayeeVo> payees) {
         this.payees = payees;
     }
     //endregion

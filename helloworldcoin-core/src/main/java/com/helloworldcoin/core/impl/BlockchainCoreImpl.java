@@ -4,8 +4,8 @@ import com.helloworldcoin.core.*;
 import com.helloworldcoin.core.model.Block;
 import com.helloworldcoin.core.model.transaction.Transaction;
 import com.helloworldcoin.core.model.transaction.TransactionOutput;
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionRequest;
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionResponse;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionRequest;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionResponse;
 import com.helloworldcoin.core.tool.Model2DtoTool;
 import com.helloworldcoin.netcore.dto.BlockDto;
 import com.helloworldcoin.netcore.dto.TransactionDto;
@@ -110,8 +110,8 @@ public class BlockchainCoreImpl extends BlockchainCore {
 
 
     @Override
-    public AutoBuildTransactionResponse autoBuildTransaction(AutoBuildTransactionRequest request) {
-        return wallet.autoBuildTransaction(request);
+    public AutomaticBuildTransactionResponse automaticBuildTransaction(AutomaticBuildTransactionRequest request) {
+        return wallet.automaticBuildTransaction(request);
     }
 
     @Override

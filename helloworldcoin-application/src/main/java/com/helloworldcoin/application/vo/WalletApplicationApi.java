@@ -14,6 +14,6 @@ public class WalletApplicationApi {
 
 
 
-    public static final String AUTOMATIC_BUILD_TRANSACTION = "/Api/WalletApplication/AutomaticBuildTransaction";
+    public static final String BUILD_TRANSACTION = "/Api/WalletApplication/BuildTransaction";
     public static final String SUBMIT_TRANSACTION_TO_BLOCKCHIAIN_NEWWORK = "/Api/WalletApplication/SubmitTransactionToBlockchainNetwork";
 }

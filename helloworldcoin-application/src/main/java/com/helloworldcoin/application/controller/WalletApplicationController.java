@@ -6,8 +6,8 @@ import com.helloworldcoin.application.vo.account.*;
 import com.helloworldcoin.application.vo.framwork.Response;
 import com.helloworldcoin.application.vo.transaction.SubmitTransactionToBlockchainNetworkRequest;
 import com.helloworldcoin.application.vo.transaction.SubmitTransactionToBlockchainNetworkResponse;
-import com.helloworldcoin.application.vo.wallet.AutomaticBuildTransactionRequest;
-import com.helloworldcoin.application.vo.wallet.AutomaticBuildTransactionResponse;
+import com.helloworldcoin.application.vo.wallet.BuildTransactionRequest;
+import com.helloworldcoin.application.vo.wallet.BuildTransactionResponse;
 import com.helloworldcoin.core.Wallet;
 import com.helloworldcoin.crypto.AccountUtil;
 import com.helloworldcoin.crypto.model.Account;
@@ -146,20 +146,19 @@ public class WalletApplicationController {
     }
 
     /**
-     * automatic build transaction
-     * //TODO BUILD_TRANSACTION
+     * build transaction
      */
-    @RequestMapping(value = WalletApplicationApi.AUTOMATIC_BUILD_TRANSACTION,method={RequestMethod.GET,RequestMethod.POST})
-    public Response<AutomaticBuildTransactionResponse> automaticBuildTransaction(@RequestBody AutomaticBuildTransactionRequest request){
+    @RequestMapping(value = WalletApplicationApi.BUILD_TRANSACTION,method={RequestMethod.GET,RequestMethod.POST})
+    public Response<BuildTransactionResponse> buildTransaction(@RequestBody BuildTransactionRequest request){
         try {
-            AutomaticBuildTransactionResponse autoBuildTransactionResponse = walletApplicationService.automaticBuildTransaction(request);
-            if(autoBuildTransactionResponse.isBuildTransactionSuccess()){
-                return Response.success(autoBuildTransactionResponse);
+            BuildTransactionResponse buildTransactionResponse = walletApplicationService.buildTransaction(request);
+            if(buildTransactionResponse.isBuildTransactionSuccess()){
+                return Response.success(buildTransactionResponse);
             }else {
                 return Response.serviceUnavailable();
             }
         } catch (Exception e){
-            String message = "'automatic build transaction' error.";
+            String message = "'build transaction' error.";
             LogUtil.error(message,e);
             return Response.serviceUnavailable();
         }

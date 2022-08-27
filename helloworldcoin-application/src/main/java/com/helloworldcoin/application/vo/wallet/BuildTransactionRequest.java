@@ -6,7 +6,7 @@ import java.util.List;
  *
  * @author x.king xdotking@gmail.com
  */
-public class AutomaticBuildTransactionRequest {
+public class BuildTransactionRequest {
 
     private List<PayeeVo> nonChangePayees;
 

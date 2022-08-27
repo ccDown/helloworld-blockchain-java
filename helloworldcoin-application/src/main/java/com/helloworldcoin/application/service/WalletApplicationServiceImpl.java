@@ -2,12 +2,12 @@ package com.helloworldcoin.application.service;
 
 import com.helloworldcoin.application.vo.transaction.SubmitTransactionToBlockchainNetworkRequest;
 import com.helloworldcoin.application.vo.transaction.SubmitTransactionToBlockchainNetworkResponse;
-import com.helloworldcoin.application.vo.wallet.AutomaticBuildTransactionRequest;
-import com.helloworldcoin.application.vo.wallet.AutomaticBuildTransactionResponse;
+import com.helloworldcoin.application.vo.wallet.BuildTransactionRequest;
+import com.helloworldcoin.application.vo.wallet.BuildTransactionResponse;
 import com.helloworldcoin.application.vo.wallet.PayeeVo;
 import com.helloworldcoin.application.vo.wallet.PayerVo;
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionRequest;
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionResponse;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionRequest;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionResponse;
 import com.helloworldcoin.core.model.wallet.Payee;
 import com.helloworldcoin.core.model.wallet.Payer;
 import com.helloworldcoin.netcore.BlockchainNetCore;
@@ -66,21 +66,21 @@ public class WalletApplicationServiceImpl implements WalletApplicationService {
     }
 
     @Override
-    public AutomaticBuildTransactionResponse automaticBuildTransaction(AutomaticBuildTransactionRequest request) {
-        AutoBuildTransactionRequest autoBuildTransactionRequest = new AutoBuildTransactionRequest();
-        autoBuildTransactionRequest.setNonChangePayees(payeeVos2payees(request.getNonChangePayees()));
+    public BuildTransactionResponse buildTransaction(BuildTransactionRequest request) {
+        AutomaticBuildTransactionRequest automaticBuildTransactionRequest = new AutomaticBuildTransactionRequest();
+        automaticBuildTransactionRequest.setNonChangePayees(payeeVos2payees(request.getNonChangePayees()));
 
-        AutoBuildTransactionResponse autoBuildTransactionResponse = blockchainNetCore.getBlockchainCore().autoBuildTransaction(autoBuildTransactionRequest);
+        AutomaticBuildTransactionResponse automaticBuildTransactionResponse = blockchainNetCore.getBlockchainCore().automaticBuildTransaction(automaticBuildTransactionRequest);
 
-        AutomaticBuildTransactionResponse response = new AutomaticBuildTransactionResponse();
-        response.setBuildTransactionSuccess(autoBuildTransactionResponse.isBuildTransactionSuccess());
-        response.setTransactionHash(autoBuildTransactionResponse.getTransactionHash());
-        response.setFee(autoBuildTransactionResponse.getFee());
-        response.setTransaction(autoBuildTransactionResponse.getTransaction());
-        response.setPayers(payers2payerVos(autoBuildTransactionResponse.getPayers()));
-        response.setPayees(payees2payeeVos(autoBuildTransactionResponse.getPayees()));
-        response.setChangePayee(payee2payeeVo(autoBuildTransactionResponse.getChangePayee()));
-        response.setNonChangePayees(payees2payeeVos(autoBuildTransactionResponse.getNonChangePayees()));
+        BuildTransactionResponse response = new BuildTransactionResponse();
+        response.setBuildTransactionSuccess(automaticBuildTransactionResponse.isBuildTransactionSuccess());
+        response.setTransactionHash(automaticBuildTransactionResponse.getTransactionHash());
+        response.setFee(automaticBuildTransactionResponse.getFee());
+        response.setTransaction(automaticBuildTransactionResponse.getTransaction());
+        response.setPayers(payers2payerVos(automaticBuildTransactionResponse.getPayers()));
+        response.setPayees(payees2payeeVos(automaticBuildTransactionResponse.getPayees()));
+        response.setChangePayee(payee2payeeVo(automaticBuildTransactionResponse.getChangePayee()));
+        response.setNonChangePayees(payees2payeeVos(automaticBuildTransactionResponse.getNonChangePayees()));
 
         return response;
     }

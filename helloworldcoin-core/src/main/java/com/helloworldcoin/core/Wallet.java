@@ -1,7 +1,7 @@
 package com.helloworldcoin.core;
 
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionRequest;
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionResponse;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionRequest;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionResponse;
 import com.helloworldcoin.crypto.model.Account;
 
 import java.util.List;
@@ -32,6 +32,5 @@ public abstract class Wallet {
 
     public abstract long getBalanceByAddress(String address);
 
-    //todo rename
-    public abstract AutoBuildTransactionResponse autoBuildTransaction(AutoBuildTransactionRequest request) ;
+    public abstract AutomaticBuildTransactionResponse automaticBuildTransaction(AutomaticBuildTransactionRequest request) ;
 }

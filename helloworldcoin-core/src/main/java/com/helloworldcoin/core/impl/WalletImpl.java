@@ -4,8 +4,8 @@ import com.helloworldcoin.core.BlockchainDatabase;
 import com.helloworldcoin.core.CoreConfiguration;
 import com.helloworldcoin.core.Wallet;
 import com.helloworldcoin.core.model.transaction.TransactionOutput;
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionRequest;
-import com.helloworldcoin.core.model.wallet.AutoBuildTransactionResponse;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionRequest;
+import com.helloworldcoin.core.model.wallet.AutomaticBuildTransactionResponse;
 import com.helloworldcoin.core.model.wallet.Payee;
 import com.helloworldcoin.core.model.wallet.Payer;
 import com.helloworldcoin.core.tool.ScriptDtoTool;
@@ -95,7 +95,7 @@ public class WalletImpl extends Wallet {
     }
 
     @Override
-    public AutoBuildTransactionResponse autoBuildTransaction(AutoBuildTransactionRequest request) {
+    public AutomaticBuildTransactionResponse automaticBuildTransaction(AutomaticBuildTransactionRequest request) {
         List<Payee> nonChangePayees = request.getNonChangePayees();
         List<Payer> payers = new ArrayList<>();
         List<Account> allAccounts = getNonZeroBalanceAccounts();
@@ -120,7 +120,7 @@ public class WalletImpl extends Wallet {
                         payees.add(changePayee);
                     }
                     TransactionDto transactionDto = buildTransaction(payers,payees);
-                    AutoBuildTransactionResponse response = new AutoBuildTransactionResponse();
+                    AutomaticBuildTransactionResponse response = new AutomaticBuildTransactionResponse();
                     response.setBuildTransactionSuccess(true);
                     response.setTransaction(transactionDto);
                     response.setTransactionHash(TransactionDtoTool.calculateTransactionHash(transactionDto));
@@ -133,7 +133,7 @@ public class WalletImpl extends Wallet {
                 }
             }
         }
-        AutoBuildTransactionResponse response = new AutoBuildTransactionResponse();
+        AutomaticBuildTransactionResponse response = new AutomaticBuildTransactionResponse();
         response.setBuildTransactionSuccess(false);
         return response;
     }
