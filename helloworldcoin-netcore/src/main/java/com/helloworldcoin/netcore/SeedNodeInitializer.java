@@ -35,7 +35,7 @@ public class SeedNodeInitializer {
     }
 
     private void addSeedNodes() {
-        if(!netCoreConfiguration.isAutoSearchNode()){
+        if(!netCoreConfiguration.isNodeSearcherActive()){
             return;
         }
 

@@ -219,48 +219,47 @@ public class NodeConsoleApplicationController {
 
 
     /**
-     * is auto search node
+     * is node searcher active
      */
-    @RequestMapping(value = NodeConsoleApplicationApi.IS_AUTO_SEARCH_NODE,method={RequestMethod.GET,RequestMethod.POST})
-    public Response<IsAutoSearchNodeResponse> isAutoSearchNode(@RequestBody IsAutoSearchNodeRequest request){
+    @RequestMapping(value = NodeConsoleApplicationApi.IS_NODE_SEARCHER_ACTIVE,method={RequestMethod.GET,RequestMethod.POST})
+    public Response<IsNodeSearcherActiveResponse> isNodeSearcherActive(@RequestBody IsNodeSearcherActiveRequest request){
         try {
-            boolean isAutoSearchNode = blockchainNetCore.getNetCoreConfiguration().isAutoSearchNode();
-            IsAutoSearchNodeResponse response = new IsAutoSearchNodeResponse();
-            response.setAutoSearchNode(isAutoSearchNode);
+            boolean isNodeSearcherActive = blockchainNetCore.getNetCoreConfiguration().isNodeSearcherActive();
+            IsNodeSearcherActiveResponse response = new IsNodeSearcherActiveResponse();
+            response.setAutoSearchNode(isNodeSearcherActive);
             return Response.success(response);
         } catch (Exception e){
-            String message = "'is auto search node' error.";
+            String message = "'is node searcher active' error.";
             LogUtil.error(message,e);
             return Response.serviceUnavailable();
         }
     }
     /**
-     * active auto search node
+     * active node searcher
      */
-    //TODO ACTIVE_SEARCH_NODE ?
-    @RequestMapping(value = NodeConsoleApplicationApi.ACTIVE_AUTO_SEARCH_NODE,method={RequestMethod.GET,RequestMethod.POST})
-    public Response<ActiveAutoSearchNodeResponse> activeAutoSearchNode(@RequestBody ActiveAutoSearchNodeRequest request){
+    @RequestMapping(value = NodeConsoleApplicationApi.ACTIVE_NODE_SEARCHER,method={RequestMethod.GET,RequestMethod.POST})
+    public Response<ActiveNodeSearcherResponse> activeNodeSearcher(@RequestBody ActiveNodeSearcherRequest request){
         try {
-            blockchainNetCore.getNetCoreConfiguration().activeAutoSearchNode();
-            ActiveAutoSearchNodeResponse response = new ActiveAutoSearchNodeResponse();
+            blockchainNetCore.getNetCoreConfiguration().activeNodeSearcher();
+            ActiveNodeSearcherResponse response = new ActiveNodeSearcherResponse();
             return Response.success(response);
         } catch (Exception e){
-            String message = "'active auto search node' error.";
+            String message = "'active node searcher' error.";
             LogUtil.error(message,e);
             return Response.serviceUnavailable();
         }
     }
     /**
-     * deactive auto search node
+     * deactive node searcher
      */
-    @RequestMapping(value = NodeConsoleApplicationApi.DEACTIVE_AUTO_SEARCH_NODE,method={RequestMethod.GET,RequestMethod.POST})
-    public Response<DeactiveAutoSearchNodeResponse> deactiveAutoSearchNode(@RequestBody DeactiveAutoSearchNodeRequest request){
+    @RequestMapping(value = NodeConsoleApplicationApi.DEACTIVE_NODE_SEARCHER,method={RequestMethod.GET,RequestMethod.POST})
+    public Response<DeactiveNodeSearcherResponse> deactiveNodeSearcher(@RequestBody DeactiveNodeSearcherRequest request){
         try {
-            blockchainNetCore.getNetCoreConfiguration().deactiveAutoSearchNode();
-            DeactiveAutoSearchNodeResponse response = new DeactiveAutoSearchNodeResponse();
+            blockchainNetCore.getNetCoreConfiguration().deactiveNodeSearcher();
+            DeactiveNodeSearcherResponse response = new DeactiveNodeSearcherResponse();
             return Response.success(response);
         } catch (Exception e){
-            String message = "'deactive auto search node' error.";
+            String message = "'deactive node searcher' error.";
             LogUtil.error(message,e);
             return Response.serviceUnavailable();
         }

@@ -16,8 +16,8 @@ public class NetCoreConfigurationImpl implements NetCoreConfiguration {
     private static final String IS_BLOCK_SEARCHER_ACTIVE_OPTION_KEY = "IS_BLOCK_SEARCHER_ACTIVE";
     private static final boolean IS_BLOCK_SEARCHER_ACTIVE_OPTION_DEFAULT_VALUE = true;
 
-    private static final String AUTO_SEARCH_NODE_OPTION_KEY = "IS_AUTO_SEARCH_NODE";
-    private static final boolean AUTO_SEARCH_NODE_OPTION_DEFAULT_VALUE = true;
+    private static final String IS_NODE_SEARCHER_ACTIVE_OPTION_KEY = "IS_NODE_SEARCHER_ACTIVE";
+    private static final boolean IS_NODE_SEARCHER_ACTIVE_OPTION_DEFAULT_VALUE = true;
 
     private static final long SEARCH_NODE_TIME_INTERVAL = 1000 * 60 * 2;
     private static final long SEARCH_BLOCKCHAIN_HEIGHT_TIME_INTERVAL = 1000 * 60 * 2;
@@ -64,22 +64,22 @@ public class NetCoreConfigurationImpl implements NetCoreConfiguration {
     }
 
     @Override
-    public boolean isAutoSearchNode() {
-        byte[] bytesConfigurationValue = getConfigurationValue(ByteUtil.stringToUtf8Bytes(AUTO_SEARCH_NODE_OPTION_KEY));
+    public boolean isNodeSearcherActive() {
+        byte[] bytesConfigurationValue = getConfigurationValue(ByteUtil.stringToUtf8Bytes(IS_NODE_SEARCHER_ACTIVE_OPTION_KEY));
         if(bytesConfigurationValue == null){
-            return AUTO_SEARCH_NODE_OPTION_DEFAULT_VALUE;
+            return IS_NODE_SEARCHER_ACTIVE_OPTION_DEFAULT_VALUE;
         }
         return ByteUtil.utf8BytesToBoolean(bytesConfigurationValue);
     }
 
     @Override
-    public void activeAutoSearchNode() {
-        addOrUpdateConfiguration(ByteUtil.stringToUtf8Bytes(AUTO_SEARCH_NODE_OPTION_KEY),ByteUtil.booleanToUtf8Bytes(true));
+    public void activeNodeSearcher() {
+        addOrUpdateConfiguration(ByteUtil.stringToUtf8Bytes(IS_NODE_SEARCHER_ACTIVE_OPTION_KEY),ByteUtil.booleanToUtf8Bytes(true));
     }
 
     @Override
-    public void deactiveAutoSearchNode() {
-        addOrUpdateConfiguration(ByteUtil.stringToUtf8Bytes(AUTO_SEARCH_NODE_OPTION_KEY),ByteUtil.booleanToUtf8Bytes(false));
+    public void deactiveNodeSearcher() {
+        addOrUpdateConfiguration(ByteUtil.stringToUtf8Bytes(IS_NODE_SEARCHER_ACTIVE_OPTION_KEY),ByteUtil.booleanToUtf8Bytes(false));
     }
 
     @Override

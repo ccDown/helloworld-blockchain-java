@@ -23,9 +23,9 @@ public interface NetCoreConfiguration {
     void deactiveBlockSearcher() ;
 
 
-    boolean isAutoSearchNode();
-    void activeAutoSearchNode();
-    void deactiveAutoSearchNode();
+    boolean isNodeSearcherActive();
+    void activeNodeSearcher();
+    void deactiveNodeSearcher();
 
 
     long getBlockSearchTimeInterval();

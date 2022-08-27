@@ -39,7 +39,7 @@ public class NodeSearcher {
     }
 
     private void searchNodes() {
-        if(!netCoreConfiguration.isAutoSearchNode()){
+        if(!netCoreConfiguration.isNodeSearcherActive()){
             return;
         }
         List<Node> nodes = nodeService.queryAllNodes();
@@ -48,7 +48,7 @@ public class NodeSearcher {
         }
 
         for(Node node:nodes){
-            if(!netCoreConfiguration.isAutoSearchNode()){
+            if(!netCoreConfiguration.isNodeSearcherActive()){
                 return;
             }
             NodeClient nodeClient = new NodeClientImpl(node.getIp());
@@ -68,7 +68,7 @@ public class NodeSearcher {
         }
 
         for(NodeDto node:nodes){
-            if(!netCoreConfiguration.isAutoSearchNode()){
+            if(!netCoreConfiguration.isNodeSearcherActive()){
                 return;
             }
             NodeClient nodeClient = new NodeClientImpl(node.getIp());

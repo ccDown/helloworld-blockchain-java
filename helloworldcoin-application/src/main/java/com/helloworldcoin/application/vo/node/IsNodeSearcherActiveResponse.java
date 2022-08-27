@@ -4,7 +4,7 @@ package com.helloworldcoin.application.vo.node;
  *
  * @author x.king xdotking@gmail.com
  */
-public class IsAutoSearchNodeResponse {
+public class IsNodeSearcherActiveResponse {
 
     private boolean autoSearchNode;
 

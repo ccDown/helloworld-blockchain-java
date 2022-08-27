@@ -18,9 +18,9 @@ public class NodeConsoleApplicationApi {
 
 
 
-    public static final String IS_AUTO_SEARCH_NODE = "/Api/NodeConsoleApplication/IsAutoSearchNode";
-    public static final String ACTIVE_AUTO_SEARCH_NODE = "/Api/NodeConsoleApplication/ActiveAutoSearchNode";
-    public static final String DEACTIVE_AUTO_SEARCH_NODE = "/Api/NodeConsoleApplication/DeactiveAutoSearchNode";
+    public static final String IS_NODE_SEARCHER_ACTIVE = "/Api/NodeConsoleApplication/IsNodeSearcherActive";
+    public static final String ACTIVE_NODE_SEARCHER = "/Api/NodeConsoleApplication/ActiveNodeSearcher";
+    public static final String DEACTIVE_NODE_SEARCHER = "/Api/NodeConsoleApplication/DeactiveNodeSearcher";
 
     public static final String SET_MINER_MINE_MAX_BLOCK_HEIGHT = "/Api/NodeConsoleApplication/SetMinerMineMaxBlockHeight";
     public static final String GET_MINER_MINE_MAX_BLOCK_HEIGHT = "/Api/NodeConsoleApplication/GetMinerMineMaxBlockHeight";

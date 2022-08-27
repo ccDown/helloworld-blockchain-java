@@ -122,7 +122,7 @@ public class NodeServerHandler extends SimpleChannelInboundHandler<FullHttpReque
 
 	public PingResponse ping(String requestIp, PingRequest request){
 		try {
-			if(netCoreConfiguration.isAutoSearchNode()){
+			if(netCoreConfiguration.isNodeSearcherActive()){
 				Node node = new Node();
 				node.setIp(requestIp);
 				node.setBlockchainHeight(0);
