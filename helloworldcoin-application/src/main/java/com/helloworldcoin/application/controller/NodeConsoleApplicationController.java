@@ -82,48 +82,47 @@ public class NodeConsoleApplicationController {
 
 
     /**
-     * is auto search block
+     * is block searcher active
      */
-    //TODO IS_SEARCH_BLOCK
-    @RequestMapping(value = NodeConsoleApplicationApi.IS_AUTO_SEARCH_BLOCK,method={RequestMethod.GET,RequestMethod.POST})
-    public Response<IsAutoSearchBlockResponse> isAutoSearchBlock(@RequestBody IsAutoSearchBlockRequest request){
+    @RequestMapping(value = NodeConsoleApplicationApi.IS_BLOCK_SEARCHER_ACTIVE,method={RequestMethod.GET,RequestMethod.POST})
+    public Response<IsBlockSearcherActiveResponse> isBlockSearcherActive(@RequestBody IsBlockSearcherActiveRequest request){
         try {
-            boolean isAutoSearchBlock = blockchainNetCore.getNetCoreConfiguration().isAutoSearchBlock();
-            IsAutoSearchBlockResponse response = new IsAutoSearchBlockResponse();
-            response.setAutoSearchBlock(isAutoSearchBlock);
+            boolean isBlockSearcherActive = blockchainNetCore.getNetCoreConfiguration().isBlockSearcherActive();
+            IsBlockSearcherActiveResponse response = new IsBlockSearcherActiveResponse();
+            response.setAutoSearchBlock(isBlockSearcherActive);
             return Response.success(response);
         } catch (Exception e){
-            String message = "'is auto search block' error.";
+            String message = "'is block searcher active' error.";
             LogUtil.error(message,e);
             return Response.serviceUnavailable();
         }
     }
     /**
-     * active auto search block
+     * active block searcher
      */
-    @RequestMapping(value = NodeConsoleApplicationApi.ACTIVE_AUTO_SEARCH_BLOCK,method={RequestMethod.GET,RequestMethod.POST})
-    public Response<ActiveAutoSearchBlockResponse> activeAutoSearchBlock(@RequestBody ActiveAutoSearchBlockRequest request){
+    @RequestMapping(value = NodeConsoleApplicationApi.ACTIVE_BLOCK_SEARCHER,method={RequestMethod.GET,RequestMethod.POST})
+    public Response<ActiveBlockSearcherResponse> activeBlockSearcher(@RequestBody ActiveBlockSearcherRequest request){
         try {
-            blockchainNetCore.getNetCoreConfiguration().activeAutoSearchBlock();
-            ActiveAutoSearchBlockResponse response = new ActiveAutoSearchBlockResponse();
+            blockchainNetCore.getNetCoreConfiguration().activeBlockSearcher();
+            ActiveBlockSearcherResponse response = new ActiveBlockSearcherResponse();
             return Response.success(response);
         } catch (Exception e){
-            String message = "'active auto search block' error.";
+            String message = "'active block searcher' error.";
             LogUtil.error(message,e);
             return Response.serviceUnavailable();
         }
     }
     /**
-     * deactive auto search block
+     * deactive block searcher
      */
-    @RequestMapping(value = NodeConsoleApplicationApi.DEACTIVE_AUTO_SEARCH_BLOCK,method={RequestMethod.GET,RequestMethod.POST})
-    public Response<DeactiveAutoSearchBlockResponse> deactiveAutoSearchBlock(@RequestBody DeactiveAutoSearchBlockRequest request){
+    @RequestMapping(value = NodeConsoleApplicationApi.DEACTIVE_BLOCK_SEARCHER,method={RequestMethod.GET,RequestMethod.POST})
+    public Response<DeactiveBlockSearcherResponse> deactiveBlockSearcher(@RequestBody DeactiveBlockSearcherRequest request){
         try {
-            blockchainNetCore.getNetCoreConfiguration().deactiveAutoSearchBlock();
-            DeactiveAutoSearchBlockResponse response = new DeactiveAutoSearchBlockResponse();
+            blockchainNetCore.getNetCoreConfiguration().deactiveBlockSearcher();
+            DeactiveBlockSearcherResponse response = new DeactiveBlockSearcherResponse();
             return Response.success(response);
         } catch (Exception e){
-            String message = "'deactive auto search block' error.";
+            String message = "'deactive block searcher' error.";
             LogUtil.error(message,e);
             return Response.serviceUnavailable();
         }

@@ -70,7 +70,7 @@ public class BlockSearcher {
      * search blocks
      */
     public void searchNodeBlocks(BlockchainCore masterBlockchainCore, BlockchainCore slaveBlockchainCore, Node node) {
-        if(!netCoreConfiguration.isAutoSearchBlock()){
+        if(!netCoreConfiguration.isBlockSearcherActive()){
             return;
         }
         long masterBlockchainHeight = masterBlockchainCore.queryBlockchainHeight();

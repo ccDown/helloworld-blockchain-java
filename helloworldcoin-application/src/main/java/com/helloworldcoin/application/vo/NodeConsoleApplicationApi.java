@@ -12,9 +12,9 @@ public class NodeConsoleApplicationApi {
 
 
 
-    public static final String IS_AUTO_SEARCH_BLOCK = "/Api/NodeConsoleApplication/IsAutoSearchBlock";
-    public static final String ACTIVE_AUTO_SEARCH_BLOCK = "/Api/NodeConsoleApplicationle/ActiveAutoSearchBlock";
-    public static final String DEACTIVE_AUTO_SEARCH_BLOCK = "/Api/NodeConsoleApplication/DeactiveAutoSearchBlock";
+    public static final String IS_BLOCK_SEARCHER_ACTIVE = "/Api/NodeConsoleApplication/IsBlockSearcherActive";
+    public static final String ACTIVE_BLOCK_SEARCHER = "/Api/NodeConsoleApplicationle/ActiveBlockSearcher";
+    public static final String DEACTIVE_BLOCK_SEARCHER = "/Api/NodeConsoleApplication/DeactiveBlockSearcher";
 
 
 

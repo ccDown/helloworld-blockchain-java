@@ -18,9 +18,9 @@ public interface NetCoreConfiguration {
     long getNodeCleanTimeInterval();
 
 
-    boolean isAutoSearchBlock();
-    void activeAutoSearchBlock();
-    void deactiveAutoSearchBlock() ;
+    boolean isBlockSearcherActive();
+    void activeBlockSearcher();
+    void deactiveBlockSearcher() ;
 
 
     boolean isAutoSearchNode();
