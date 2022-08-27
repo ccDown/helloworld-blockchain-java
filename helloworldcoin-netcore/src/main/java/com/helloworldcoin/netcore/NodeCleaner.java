@@ -31,8 +31,7 @@ public class NodeCleaner {
     public void start() {
         try {
             while (true){
-                //TODO cleanNodes
-                cleanDeadNodes();
+                cleanNodes();
                 ThreadUtil.millisecondSleep(netCoreConfiguration.getNodeCleanTimeInterval());
             }
         } catch (Exception e) {
@@ -40,7 +39,7 @@ public class NodeCleaner {
         }
     }
 
-    private void cleanDeadNodes() {
+    private void cleanNodes() {
         List<Node> nodes = nodeService.queryAllNodes();
         if(nodes == null || nodes.size() == 0){
             return;
