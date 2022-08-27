@@ -66,9 +66,6 @@ public class BlockSearcher {
         }
     }
 
-    /**
-     * search blocks
-     */
     public void searchNodeBlocks(BlockchainCore masterBlockchainCore, BlockchainCore slaveBlockchainCore, Node node) {
         if(!netCoreConfiguration.isBlockSearcherActive()){
             return;
@@ -81,22 +78,47 @@ public class BlockSearcher {
         if(fork){
             boolean isHardFork = isHardForkNode(masterBlockchainCore,node);
             if(!isHardFork){
-                long forkBlockHeight = getForkBlockHeight(masterBlockchainCore,node);
                 duplicateBlockchainCore(masterBlockchainCore, slaveBlockchainCore);
-                //TODO criticalPointBlocHeight
-                slaveBlockchainCore.deleteBlocks(forkBlockHeight);
-                synchronizeBlocks(slaveBlockchainCore,node,forkBlockHeight);
+                deleteBlocksToBlockchainCoreByNode(slaveBlockchainCore,node);
+                addBlocksToBlockchainCoreByNode(slaveBlockchainCore,node);
                 promoteBlockchainCore(slaveBlockchainCore, masterBlockchainCore);
             }
         } else {
-            long nextBlockHeight = masterBlockchainCore.queryBlockchainHeight()+1;
-            synchronizeBlocks(masterBlockchainCore,node,nextBlockHeight);
+            addBlocksToBlockchainCoreByNode(masterBlockchainCore,node);
         }
     }
 
-    /**
-     * duplicate BlockchainCore
-     */
+    private void deleteBlocksToBlockchainCoreByNode(BlockchainCore blockchainCore, Node node) {
+        long criticalPointBlocHeight = blockchainCore.queryBlockchainHeight()-netCoreConfiguration.getHardForkBlockCount()+1;
+
+        while (true) {
+            long slaveBlockchainHeight = blockchainCore.queryBlockchainHeight();
+            if (slaveBlockchainHeight <= GenesisBlockSetting.HEIGHT) {
+                break;
+            }
+            if (slaveBlockchainHeight <= criticalPointBlocHeight) {
+                break;
+            }
+            GetBlockRequest getBlockRequest = new GetBlockRequest();
+            getBlockRequest.setBlockHeight(slaveBlockchainHeight);
+            NodeClient nodeClient = new NodeClientImpl(node.getIp());
+            GetBlockResponse getBlockResponse = nodeClient.getBlock(getBlockRequest);
+            if(getBlockResponse == null){
+                break;
+            }
+            BlockDto remoteBlock = getBlockResponse.getBlock();
+            if(remoteBlock == null){
+                break;
+            }
+            Block localBlock = blockchainCore.queryBlockByBlockHeight(slaveBlockchainHeight);
+            if(BlockDtoTool.isBlockEquals(Model2DtoTool.block2BlockDto(localBlock),remoteBlock)){
+                break;
+            }else {
+                blockchainCore.deleteBlocks(slaveBlockchainHeight);
+            }
+        }
+    }
+
     private void duplicateBlockchainCore(BlockchainCore fromBlockchainCore,BlockchainCore toBlockchainCore) {
         //delete blocks
         while (true){
@@ -121,66 +143,34 @@ public class BlockSearcher {
         }
     }
 
-    /**
-     * promote BlockchainCore
-     */
     private void promoteBlockchainCore(BlockchainCore fromBlockchainCore, BlockchainCore toBlockchainCore) {
         if(toBlockchainCore.queryBlockchainHeight() >= fromBlockchainCore.queryBlockchainHeight()){
             return;
         }
-        //hard fork
         if(isHardFork(toBlockchainCore,fromBlockchainCore)){
             return;
         }
         duplicateBlockchainCore(fromBlockchainCore,toBlockchainCore);
     }
 
-    private long getForkBlockHeight(BlockchainCore blockchainCore, Node node) {
-        long masterBlockchainHeight = blockchainCore.queryBlockchainHeight();
-        long forkBlockHeight = masterBlockchainHeight;
-        while (true) {
-            if (forkBlockHeight <= GenesisBlockSetting.HEIGHT) {
-                break;
-            }
-            GetBlockRequest getBlockRequest = new GetBlockRequest();
-            getBlockRequest.setBlockHeight(forkBlockHeight);
-            NodeClient nodeClient = new NodeClientImpl(node.getIp());
-            GetBlockResponse getBlockResponse = nodeClient.getBlock(getBlockRequest);
-            if(getBlockResponse == null){
-                break;
-            }
-            BlockDto remoteBlock = getBlockResponse.getBlock();
-            if(remoteBlock == null){
-                break;
-            }
-            Block localBlock = blockchainCore.queryBlockByBlockHeight(forkBlockHeight);
-            if(BlockDtoTool.isBlockEquals(Model2DtoTool.block2BlockDto(localBlock),remoteBlock)){
-                break;
-            }
-            forkBlockHeight--;
-        }
-        forkBlockHeight++;
-        return forkBlockHeight;
-    }
-
-    private void synchronizeBlocks(BlockchainCore blockchainCore, Node node, long startBlockHeight) {
+    private void addBlocksToBlockchainCoreByNode(BlockchainCore blockchainCore, Node node) {
         while (true){
+            long blockchainHeight = blockchainCore.queryBlockchainHeight();
             GetBlockRequest getBlockRequest = new GetBlockRequest();
-            getBlockRequest.setBlockHeight(startBlockHeight);
+            getBlockRequest.setBlockHeight(blockchainHeight+1);
             NodeClient nodeClient = new NodeClientImpl(node.getIp());
             GetBlockResponse getBlockResponse = nodeClient.getBlock(getBlockRequest);
             if(getBlockResponse == null){
                 break;
             }
-            BlockDto remoteBlock = getBlockResponse.getBlock();
-            if(remoteBlock == null){
+            BlockDto blockDto = getBlockResponse.getBlock();
+            if(blockDto == null){
                 break;
             }
-            boolean isAddBlockSuccess = blockchainCore.addBlockDto(remoteBlock);
+            boolean isAddBlockSuccess = blockchainCore.addBlockDto(blockDto);
             if(!isAddBlockSuccess){
                 break;
             }
-            startBlockHeight++;
         }
     }
 
