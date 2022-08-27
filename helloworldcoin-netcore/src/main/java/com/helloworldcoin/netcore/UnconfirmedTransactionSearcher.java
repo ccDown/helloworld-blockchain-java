@@ -1,14 +1,14 @@
 package com.helloworldcoin.netcore;
 
-import com.helloworldcoin.netcore.configuration.NetCoreConfiguration;
-import com.helloworldcoin.netcore.service.NodeService;
 import com.helloworldcoin.core.BlockchainCore;
 import com.helloworldcoin.netcore.client.NodeClient;
 import com.helloworldcoin.netcore.client.NodeClientImpl;
+import com.helloworldcoin.netcore.configuration.NetCoreConfiguration;
 import com.helloworldcoin.netcore.dto.GetUnconfirmedTransactionsRequest;
 import com.helloworldcoin.netcore.dto.GetUnconfirmedTransactionsResponse;
 import com.helloworldcoin.netcore.dto.TransactionDto;
 import com.helloworldcoin.netcore.model.Node;
+import com.helloworldcoin.netcore.service.NodeService;
 import com.helloworldcoin.util.LogUtil;
 import com.helloworldcoin.util.ThreadUtil;
 
@@ -20,15 +20,14 @@ import java.util.List;
  *
  * @author x.king xdotking@gmail.com
  */
-//TODO UnconfirmedTransactionSearcher
-public class UnconfirmedTransactionsSearcher {
+public class UnconfirmedTransactionSearcher {
 
     private NetCoreConfiguration netCoreConfiguration;
     private NodeService nodeService;
     private BlockchainCore blockchainCore;
 
 
-    public UnconfirmedTransactionsSearcher(NetCoreConfiguration netCoreConfiguration, BlockchainCore blockchainCore, NodeService nodeService) {
+    public UnconfirmedTransactionSearcher(NetCoreConfiguration netCoreConfiguration, BlockchainCore blockchainCore, NodeService nodeService) {
         this.netCoreConfiguration = netCoreConfiguration;
         this.nodeService = nodeService;
         this.blockchainCore = blockchainCore;

@@ -29,7 +29,7 @@ public class BlockchainNetCore {
     private BlockSearcher blockSearcher;
     private BlockBroadcaster blockBroadcaster;
 
-    private UnconfirmedTransactionsSearcher unconfirmedTransactionsSearcher;
+    private UnconfirmedTransactionSearcher unconfirmedTransactionSearcher;
 
 
     public BlockchainNetCore(NetCoreConfiguration netCoreConfiguration, BlockchainCore blockchainCore, NodeServer nodeServer
@@ -37,7 +37,7 @@ public class BlockchainNetCore {
             , SeedNodeInitializer seedNodeInitializer, NodeSearcher nodeSearcher, NodeBroadcaster nodeBroadcaster, NodeCleaner nodeCleaner
             , BlockchainHeightSearcher blockchainHeightSearcher, BlockchainHeightBroadcaster blockchainHeightBroadcaster
             , BlockSearcher blockSearcher, BlockBroadcaster blockBroadcaster
-            , UnconfirmedTransactionsSearcher unconfirmedTransactionsSearcher
+            , UnconfirmedTransactionSearcher unconfirmedTransactionSearcher
         ) {
         this.netCoreConfiguration = netCoreConfiguration;
 
@@ -56,7 +56,7 @@ public class BlockchainNetCore {
         this.blockBroadcaster = blockBroadcaster;
         this.blockSearcher = blockSearcher;
 
-        this.unconfirmedTransactionsSearcher = unconfirmedTransactionsSearcher;
+        this.unconfirmedTransactionSearcher = unconfirmedTransactionSearcher;
     }
 
     public void start() {
@@ -74,7 +74,7 @@ public class BlockchainNetCore {
         new Thread(()->blockBroadcaster.start()).start();
         new Thread(()->blockSearcher.start()).start();
 
-        new Thread(()->unconfirmedTransactionsSearcher.start()).start();
+        new Thread(()-> unconfirmedTransactionSearcher.start()).start();
     }
 
 
@@ -117,8 +117,8 @@ public class BlockchainNetCore {
     public BlockBroadcaster getBlockBroadcaster() {
         return blockBroadcaster;
     }
-    public UnconfirmedTransactionsSearcher getUnconfirmedTransactionsSearcher() {
-        return unconfirmedTransactionsSearcher;
+    public UnconfirmedTransactionSearcher getUnconfirmedTransactionSearcher() {
+        return unconfirmedTransactionSearcher;
     }
     //end
 }
