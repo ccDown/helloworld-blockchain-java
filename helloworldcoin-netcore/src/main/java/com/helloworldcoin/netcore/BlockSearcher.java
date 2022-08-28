@@ -157,7 +157,11 @@ public class BlockSearcher {
     }
 
     private void addBlocksToBlockchainCoreByNode(BlockchainCore blockchainCore, Node node) {
+        long addBlockCount = 0;
         while (true){
+            if (addBlockCount > netCoreConfiguration.getHardForkBlockCount()) {
+                break;
+            }
             long blockchainHeight = blockchainCore.queryBlockchainHeight();
             GetBlockRequest getBlockRequest = new GetBlockRequest();
             getBlockRequest.setBlockHeight(blockchainHeight+1);
@@ -174,6 +178,7 @@ public class BlockSearcher {
             if(!isAddBlockSuccess){
                 break;
             }
+            addBlockCount++;
         }
     }
 

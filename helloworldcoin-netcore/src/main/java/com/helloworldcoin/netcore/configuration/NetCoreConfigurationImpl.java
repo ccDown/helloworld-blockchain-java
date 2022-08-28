@@ -29,7 +29,7 @@ public class NetCoreConfigurationImpl implements NetCoreConfiguration {
     private static final long NODE_CLEAN_TIME_INTERVAL = 1000 * 60 * 10;
 
 
-    private static final long HARD_FORK_BLOCK_COUNT = 100000000;
+    private static final long HARD_FORK_BLOCK_COUNT = 100;
 
     private static final long SEARCH_UNCONFIRMED_TRANSACTIONS_TIME_INTERVAL = 1000 * 60 * 2;
 
