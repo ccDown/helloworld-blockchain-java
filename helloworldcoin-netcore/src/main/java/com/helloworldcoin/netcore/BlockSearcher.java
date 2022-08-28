@@ -89,14 +89,13 @@ public class BlockSearcher {
     }
 
     private void deleteBlocksToBlockchainCoreByNode(BlockchainCore blockchainCore, Node node) {
-        long criticalPointBlocHeight = blockchainCore.queryBlockchainHeight()-netCoreConfiguration.getHardForkBlockCount()+1;
-
+        long deleteBlockCount = 0;
         while (true) {
             long slaveBlockchainHeight = blockchainCore.queryBlockchainHeight();
             if (slaveBlockchainHeight <= GenesisBlockSetting.HEIGHT) {
                 break;
             }
-            if (slaveBlockchainHeight <= criticalPointBlocHeight) {
+            if (deleteBlockCount >= netCoreConfiguration.getHardForkBlockCount()) {
                 break;
             }
             GetBlockRequest getBlockRequest = new GetBlockRequest();
@@ -115,6 +114,7 @@ public class BlockSearcher {
                 break;
             }else {
                 blockchainCore.deleteBlocks(slaveBlockchainHeight);
+                deleteBlockCount++;
             }
         }
     }
