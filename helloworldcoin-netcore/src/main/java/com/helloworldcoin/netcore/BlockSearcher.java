@@ -139,7 +139,10 @@ public class BlockSearcher {
             if(nextBlock == null){
                 break;
             }
-            toBlockchainCore.addBlock(nextBlock);
+            boolean isAddBlockSuccess = toBlockchainCore.addBlock(nextBlock);
+            if(!isAddBlockSuccess){
+                break;
+            }
         }
     }
 
